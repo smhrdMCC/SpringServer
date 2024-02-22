@@ -5,9 +5,13 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
 
 import lombok.Data;
 
@@ -23,7 +27,7 @@ public class User {
 	@Column(name = "user_nick")
 	private String userNick;
 	
-	@Column(name = "joined_at")
+	@Column(insertable = false, updatable = false,columnDefinition = "datetime default now()",name="joined_at")
 	private Date joinedAt;
 	
 	@OneToMany(mappedBy = "userEmail")
@@ -31,6 +35,9 @@ public class User {
 	
 	@OneToMany(mappedBy = "userEmail")
 	private List<DiaryShare> diaryShare;
+	
+	public User() {
+    }
 	
 	public String toString() {
 		return "USER";

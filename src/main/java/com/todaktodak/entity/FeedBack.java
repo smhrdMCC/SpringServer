@@ -8,6 +8,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.todaktodak.serializer.diarySerializer;
+
 import lombok.Data;
 
 @Data
@@ -21,6 +24,7 @@ public class FeedBack {
 	private Long feedbackSeq;
 	
 	@ManyToOne
+	@JsonSerialize(using = diarySerializer.class)
 	@JoinColumn(name = "diarySeq")
 	private Diary diarySeq;
 	
@@ -30,10 +34,11 @@ public class FeedBack {
 	@Column(name = "ai_recommendation")
 	private String aiRecommendation;
 	
-	@Column(name = "created_at")
+	@Column(insertable = false,updatable = false,columnDefinition = "datetime default now()", name = "created_at")
 	private String createdAt;
 	
 	public String toString() {
 		return "FEEDBACK";
 	}
+
 }
