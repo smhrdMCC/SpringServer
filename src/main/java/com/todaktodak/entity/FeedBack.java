@@ -12,7 +12,7 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "tb_feedback")
+@Table(name = "emotiondate")
 public class FeedBack {
 	
 	@Id
@@ -30,7 +30,7 @@ public class FeedBack {
 	@Column(name = "ai_recommendation")
 	private String aiRecommendation;
 	
-	@Column(name = "create_at")
+	@Column(name = "created_at")
 	private String createdAt;
 	
 	public String toString() {

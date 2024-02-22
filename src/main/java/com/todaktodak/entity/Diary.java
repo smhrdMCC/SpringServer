@@ -45,7 +45,7 @@ public class Diary {
 
 	public String setUserEmail(String userEmail) {
 		
-		return "userEmail";
+		return "DIARY";
 		
 	}
 }
