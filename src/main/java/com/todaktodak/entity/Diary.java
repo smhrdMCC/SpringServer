@@ -43,9 +43,9 @@ public class Diary {
 		return "DIARY";
 	}
 
-	public String setUserEmail(String userEmail) {
-		
-		return "userEmail";
-		
-	}
+//	public String setUserEmail(String userEmail) {
+//		
+//		return "userEmail";
+//		
+//	}
 }
