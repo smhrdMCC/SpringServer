@@ -46,6 +46,7 @@ public class Diary {
 	public String toString() {
 		return "DIARY";
 	}
+
 	public Diary() {
 		
 	}

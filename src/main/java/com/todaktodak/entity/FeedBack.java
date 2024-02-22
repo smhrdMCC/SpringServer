@@ -15,7 +15,7 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "tb_feedback")
+@Table(name = "emotiondate")
 public class FeedBack {
 	
 	@Id
@@ -33,7 +33,6 @@ public class FeedBack {
 	
 	@Column(name = "ai_recommendation")
 	private String aiRecommendation;
-	
 	
 	@Column(insertable = false,updatable = false,columnDefinition = "datetime default now()", name = "created_at")
 	private String createdAt;
