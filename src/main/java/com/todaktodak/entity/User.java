@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -23,7 +24,7 @@ public class User {
 	@Column(name = "user_nick")
 	private String userNick;
 	
-	@Column(name = "joined_at")
+	@Column(insertable = false, updatable = false,columnDefinition = "datetime default now()",name="joined_at")
 	private Date joinedAt;
 	
 	@OneToMany(mappedBy = "userEmail")
