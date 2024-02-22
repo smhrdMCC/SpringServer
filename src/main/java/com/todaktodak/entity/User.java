@@ -35,6 +35,9 @@ public class User {
 	@OneToMany(mappedBy = "userEmail")
 	private List<DiaryShare> diaryShare;
 	
+	public User() {
+    }
+	
 	public String toString() {
 		return "USER";
 	}

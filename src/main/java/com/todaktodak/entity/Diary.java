@@ -53,5 +53,4 @@ public class Diary {
     public Diary(@JsonProperty("diarySeq") Long diarySeq) {
         this.diarySeq = diarySeq;
     }
-
 }
