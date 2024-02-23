@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
+
 import com.todaktodak.entity.User;
 import com.todaktodak.repository.UserRepository;
 
@@ -22,7 +23,7 @@ public class UserController {
 		users.setUserEmail(user.getUserEmail());
 		users.setUserNick(user.getUserNick());
 		repo.save(users);
-		return "1";
+		return "JOIN 성공";
 		
 	}
 }

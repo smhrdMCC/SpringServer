@@ -8,5 +8,4 @@ import com.todaktodak.entity.User;
 @Repository
 public interface UserRepository extends JpaRepository<User, String> {
 	
-	
 }

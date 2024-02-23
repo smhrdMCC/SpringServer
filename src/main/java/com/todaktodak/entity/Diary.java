@@ -14,8 +14,6 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.todaktodak.serializer.userSerializer;
 
 import lombok.Data;
 
@@ -30,14 +28,13 @@ public class Diary {
 	private Long diarySeq;
 
 	@ManyToOne
-	@JsonSerialize(using = userSerializer.class)
 	@JoinColumn(name = "user_email")
 	private User userEmail;
 
 	@Column(name = "diary_content")
 	private String diaryContent;
 
-	@Column(name = "created_at", insertable = false, updatable = false, columnDefinition = "datetime default now()")
+	@Column(name = "created_at")
 	private String createdAt;
 
 	@OneToMany(mappedBy = "diarySeq")

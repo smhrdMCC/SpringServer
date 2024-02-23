@@ -8,14 +8,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.todaktodak.serializer.diarySerializer;
-
 import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "emotiondate")
+@Table(name = "tb_feedback")
 public class FeedBack {
 	
 	@Id
@@ -24,7 +21,6 @@ public class FeedBack {
 	private Long feedbackSeq;
 	
 	@ManyToOne
-	@JsonSerialize(using = diarySerializer.class)
 	@JoinColumn(name = "diarySeq")
 	private Diary diarySeq;
 	

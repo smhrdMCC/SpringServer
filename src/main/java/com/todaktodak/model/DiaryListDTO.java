@@ -19,6 +19,4 @@ public class DiaryListDTO {
 		this.emotion_classification = emotion_classification;
 		this.diary_content = diary_content;
 	}
-    
-    
 }
