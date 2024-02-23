@@ -17,11 +17,10 @@ import lombok.Data;
 @Table(name = "tb_diary_with")
 public class DiaryWith {
 	
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "diary_seq")
-	private Long diarySeq;
+	private Integer diarySeq;
 	
 	@Column(name = "diary_content")
 	private String diaryContent;

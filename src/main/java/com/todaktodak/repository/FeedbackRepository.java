@@ -8,6 +8,4 @@ import com.todaktodak.entity.FeedBack;
 @Repository
 public interface FeedbackRepository extends JpaRepository<FeedBack, Long>{
 	
-	
-
 }

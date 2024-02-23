@@ -1,6 +1,5 @@
 package com.todaktodak.entity;
 
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -13,6 +12,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import lombok.Data;
 
 @Data
@@ -24,28 +26,29 @@ public class Diary {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "diary_seq")
 	private Long diarySeq;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "user_email")
 	private User userEmail;
-	
+
 	@Column(name = "diary_content")
 	private String diaryContent;
-	
-	
-	@Column(name = "created_at", insertable = false,updatable = false,columnDefinition = "datetime default now()")
+
+	@Column(name = "created_at")
 	private String createdAt;
-	
+
 	@OneToMany(mappedBy = "diarySeq")
 	private List<FeedBack> feedback;
-	
+
 	public String toString() {
 		return "DIARY";
 	}
 
-	public String setUserEmail(String userEmail) {
-		
-		return "DIARY";
+	public Diary() {
 		
 	}
+	@JsonCreator
+    public Diary(@JsonProperty("diarySeq") Long diarySeq) {
+        this.diarySeq = diarySeq;
+    }
 }
