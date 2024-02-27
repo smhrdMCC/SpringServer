@@ -1,11 +1,15 @@
 package com.todaktodak.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.todaktodak.entity.Diary;
 import com.todaktodak.entity.FeedBack;
 import com.todaktodak.entity.FeedBackDTO;
@@ -16,7 +20,7 @@ public class FeedbackController {
 
 	@Autowired
 	private FeedbackRepository repo;
-
+	
 	@ResponseBody
 	@PostMapping("/feedback")
 	public String SaveText(@RequestBody String feedback) {
@@ -36,6 +40,26 @@ public class FeedbackController {
 
 		repo.save(backFeed);
 		return "성공";
+	}
+
+	@ResponseBody
+	@PostMapping("/getFeedBackMessage")
+	public String SendFeedBackText(@RequestBody String feedback) {
+		
+		System.out.println(feedback);
+		String data = feedback.replaceAll("\"", "");
+		Diary diary = new Diary();
+		diary.setDiarySeq(Long.parseLong(data));
+		
+		List<FeedBack> list = repo.findByDiarySeq(diary);
+		System.out.println(list.get(0).getAiRecommendation());
+		
+		Gson gson = new GsonBuilder().create();
+
+		String json = gson.toJson(list.get(0).getAiRecommendation());
+
+		return json;
+		
 	}
 
 }

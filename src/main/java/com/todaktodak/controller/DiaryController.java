@@ -1,5 +1,8 @@
 package com.todaktodak.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -33,10 +36,13 @@ public class DiaryController {
 		diary.setDiaryContent(diaryContent);
 		diary.setUserEmail(user);
 		diary.setCreatedAt(save[2]);
-
+		
 		repo.save(diary);
+		
+		System.out.println(diary.getDiarySeq());
+		
 
-		return "diary";
+		return diary.getDiarySeq().toString();
 	}
 
 }

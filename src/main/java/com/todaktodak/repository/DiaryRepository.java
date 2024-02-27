@@ -15,5 +15,7 @@ import org.springframework.data.repository.query.Param;
 @ComponentScan
 @Repository
 public interface DiaryRepository extends JpaRepository<Diary, Long> {
+	
+	
 
 }
