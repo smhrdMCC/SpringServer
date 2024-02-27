@@ -22,15 +22,17 @@ public class DiaryShare{
 	private Long shareSeq;
 	
 	@ManyToOne
-	@JoinColumn(name = "userEmail")
+	@JoinColumn(name = "user_email")
 	private User userEmail;
 	
-	@Column(name = "partner_email")
-	private String partnerEmail;
+	@Column(name = "to_user")
+	private String toUser;
 	
-	@ManyToOne
-	@JoinColumn(name = "diarySeq")
-	private DiaryWith diarySeq;
+	@Column(name = "diary_content")
+	private String diaryContent;
+	
+	@Column(name = "created_at")
+	private String createdAt;
 	
 	public String toString() {
 		return "SHARE";

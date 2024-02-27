@@ -6,4 +6,8 @@ import lombok.Data;
 public class emailnick {
 	private String email;
 	private String nick;
+	
+	public String toString() {
+		return "EMAIL_NICK";
+	}
 }

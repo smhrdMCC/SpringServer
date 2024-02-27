@@ -63,18 +63,18 @@ public class CalenderController {
 	@PostMapping("/dairyList")
 	private String getDiaryList(@RequestBody datemail inf) {
 		
-		System.out.println(" ");
-		System.out.println("받아온 정보 " + inf);
-		
 		String date = inf.getDate().toString();
 		String email = inf.getEmail().toString();
 
 		List<FeedBack> feed = repo.findByCreatedAtLike(date, email);
 		List<Diary> diary = repo2.findByCreatedAtAndUserEmail(date, email);
 		
-		ArrayList<DiaryListDTO>trans = new ArrayList<DiaryListDTO>();
+		System.out.println(feed.get(0).getEmotionClassification());
+		System.out.println(diary.get(0).getDiaryContent());
 		
-		for(int i=0; i<diary.size(); i++) {
+		ArrayList<DiaryListDTO> trans = new ArrayList<DiaryListDTO>();
+		
+		for(int i=0; i<feed.size() && i<diary.size(); i++) {
 			trans.add(new DiaryListDTO(diary.get(i).getCreatedAt(), feed.get(i).getEmotionClassification(), diary.get(i).getDiaryContent()));
 		}
 		
