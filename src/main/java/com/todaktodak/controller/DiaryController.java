@@ -20,6 +20,8 @@ public class DiaryController {
 	@RequestMapping("/diary")
 	public String saveDiary(@RequestBody String userDiary) {
 
+		
+		System.out.println(userDiary);
 		Diary diary = new Diary();
 		User user = new User();
 
