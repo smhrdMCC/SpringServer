@@ -25,4 +25,6 @@ public interface SocialDiaryRepository extends JpaRepository<DiaryShare, Long> {
 	@Query(value = "insert into tb_diary_share (user_email, to_user, diary_content) values (:fromUser, :toUser, :content)", nativeQuery = true)
 	public String sendDiary(@Param("toUser") String toUser, @Param("fromUser") String fromUser, @Param("content") String content);
 	
+	@Query(value = "insert into tb_diary_share (user_email, diary_content) values (:user, :content)", nativeQuery = true)
+	public String openDiary(@Param("user") String user, @Param("content") String content);
 }

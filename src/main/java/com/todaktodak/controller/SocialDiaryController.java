@@ -11,9 +11,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.todaktodak.entity.Diary;
 import com.todaktodak.entity.DiaryShare;
 import com.todaktodak.entity.User;
 import com.todaktodak.entity.userUser;
+import com.todaktodak.model.MailContent;
 import com.todaktodak.model.RandomDiary;
 import com.todaktodak.model.ToFromContent;
 import com.todaktodak.model.linkDiary;
@@ -153,6 +155,27 @@ public class SocialDiaryController {
 		
 		return "linkUserDiary";
 		
+	}
+	
+	@ResponseBody
+	@PostMapping("openDiary")
+	private String openDiary(@RequestBody String info) {
+		
+//		String user = info.getMail();
+//		String content = info.getContent();
+//		
+//		repo.openDiary(user, content);
+//		
+//		return "openDiary";
+		
+		String saveDiary = info.replaceAll("\"", "");
+		String[] save = saveDiary.split(":");
+		String content = save[0];
+		String user = save[1];
+		
+		repo.openDiary(user, content);
+		
+		return "openDiary";
 	}
 	
 	
