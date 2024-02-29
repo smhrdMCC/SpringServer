@@ -8,13 +8,17 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.todaktodak.entity.Diary;
 import com.todaktodak.entity.User;
+import com.todaktodak.model.SeqMailContent;
 import com.todaktodak.repository.DiaryRepository;
+import com.todaktodak.repository.FeedbackRepository;
 
 @Controller
 public class DiaryController {
 
 	@Autowired
 	private DiaryRepository repo;
+	
+	private FeedbackRepository repo2;
 
 	@ResponseBody
 	@RequestMapping("/diary")
@@ -38,10 +42,32 @@ public class DiaryController {
 		
 		repo.save(diary);
 		
-		System.out.println(diary.getDiarySeq());
-		
-
 		return diary.getDiarySeq().toString();
+	}
+	
+	@ResponseBody
+	@RequestMapping("/alterDiary")
+	public String alterDiary(@RequestBody String info) {
+		
+		Diary diary = new Diary();
+		User user = new User();
+		
+		String alterDiary = info.replaceAll("\"", "");
+		String[] alter = alterDiary.split(":");
+		Long seq = Long.parseLong(alter[0]);
+		String diaryContent = alter[1];
+		String userEmail = alter[2];
+		
+		repo2.deleteFeedDiarySeq(seq);
+		repo.deleteDiaryDiarySeq(seq);
+		
+		diary.setDiaryContent(diaryContent);
+		diary.setUserEmail(user);
+		diary.setCreatedAt(alter[3]);
+		
+		repo.save(diary);
+		
+		return "alterDiary";
 	}
 
 }
