@@ -66,6 +66,8 @@ public class CalenderController {
 		String date = inf.getDate().toString();
 		String email = inf.getEmail().toString();
 
+		System.out.println(date);
+		
 		List<FeedBack> feed = repo.findByCreatedAtLike(date, email);
 		List<Diary> diary = repo2.findByCreatedAtAndUserEmail(date, email);
 		
@@ -77,6 +79,8 @@ public class CalenderController {
 		for(int i=0; i<feed.size() && i<diary.size(); i++) {
 			trans.add(new DiaryListDTO(diary.get(i).getCreatedAt(), feed.get(i).getEmotionClassification(), diary.get(i).getDiaryContent()));
 		}
+		
+		System.out.println(trans.size());
 		
 		Gson gson = new GsonBuilder().create();
 		
