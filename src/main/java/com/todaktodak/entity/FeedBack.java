@@ -30,7 +30,7 @@ public class FeedBack {
 	@Column(name = "ai_recommendation")
 	private String aiRecommendation;
 	
-	@Column(insertable = false,updatable = false,columnDefinition = "datetime default now()", name = "created_at")
+	@Column(name = "created_at")
 	private String createdAt;
 	
 	public String toString() {
