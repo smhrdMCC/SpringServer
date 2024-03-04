@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.todaktodak.entity.Diary;
 import com.todaktodak.entity.User;
-import com.todaktodak.model.SeqMailContent;
 import com.todaktodak.repository.DiaryRepository;
 import com.todaktodak.repository.FeedbackRepository;
 
@@ -24,8 +23,6 @@ public class DiaryController {
 	@RequestMapping("/diary")
 	public String saveDiary(@RequestBody String userDiary) {
 
-		
-		System.out.println(userDiary);
 		Diary diary = new Diary();
 		User user = new User();
 

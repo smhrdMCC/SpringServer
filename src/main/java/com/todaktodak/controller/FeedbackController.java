@@ -49,13 +49,11 @@ public class FeedbackController {
 	@PostMapping("/getFeedBackMessage")
 	public String SendFeedBackText(@RequestBody String feedback) {
 		
-		System.out.println(feedback);
 		String data = feedback.replaceAll("\"", "");
 		Diary diary = new Diary();
 		diary.setDiarySeq(Long.parseLong(data));
 		
 		List<FeedBack> list = repo.findByDiarySeq(diary);
-		System.out.println("list " + list.get(0).getAiRecommendation());
 		
 		Gson gson = new GsonBuilder().create();
 
