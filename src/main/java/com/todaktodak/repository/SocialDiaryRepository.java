@@ -16,8 +16,8 @@ public interface SocialDiaryRepository extends JpaRepository<DiaryShare, Long> {
 	@Query(value = "SELECT * FROM tb_diary_share WHERE to_user = :email", nativeQuery = true)
 	public List<DiaryShare> getReplyDiaryList(@Param("email") String email);
 	
-	@Query(value = "select * from tb_diary_share where to_user is null", nativeQuery = true)
-	public List<DiaryShare> getRandomDiaryList();
+	@Query(value = "select * from tb_diary_share where to_user is null and to_user != :user", nativeQuery = true)
+	public List<DiaryShare> getRandomDiaryList(@Param("user") String user);
 	
 	@Query(value = "select * from tb_diary_share where (to_user = :userA AND user_email = :userB) OR (to_user = :userB AND user_email = :userA)", nativeQuery = true)
 	public List<DiaryShare> getDiaryRoomList(@Param("userA") String userA, @Param("userB") String userB);

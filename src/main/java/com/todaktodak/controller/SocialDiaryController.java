@@ -73,9 +73,9 @@ public class SocialDiaryController {
 	
 	@ResponseBody
 	@PostMapping("getRandomDiaryList")
-	private String getRandomDiaryList() {
+	private String getRandomDiaryList(String info) {
 		
-		List<DiaryShare> diary = repo.getRandomDiaryList();
+		List<DiaryShare> diary = repo.getRandomDiaryList(info);
 		
 		ArrayList<String> nicklist = new ArrayList<String>();
 		
