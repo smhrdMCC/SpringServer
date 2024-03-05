@@ -32,15 +32,10 @@ public class CalenderController {
 	@PostMapping("/emotion")
 	private String getEmotion(@RequestBody datemail inf) {
 		
-		System.out.println(" ");
-		System.out.println("받아온 정보 " + inf);
-		
 		String date = inf.getDate().toString();
 		String email = inf.getEmail().toString();
 		
 		List<FeedBack> emotion = repo.findByCreatedAtLike(date, email);
-		
-		System.out.println("피드백 : " + emotion);
 		
 		ArrayList<emotiondate> trans = new ArrayList<emotiondate>();
 		
@@ -48,13 +43,9 @@ public class CalenderController {
 			trans.add(new emotiondate(emotion.get(i).getEmotionClassification(), emotion.get(i).getCreatedAt()));
 		}
 		
-		System.out.println(trans);
-		
 		Gson gson = new GsonBuilder().create();
 		
 		String json = gson.toJson(trans);
-		
-		System.out.println("json 변환 " + json);	
 		
 		return json;
 	}
@@ -66,13 +57,8 @@ public class CalenderController {
 		String date = inf.getDate().toString();
 		String email = inf.getEmail().toString();
 
-		System.out.println(date);
-		
 		List<FeedBack> feed = repo.findByCreatedAtLike(date, email);
 		List<Diary> diary = repo2.findByCreatedAtAndUserEmail(date, email);
-		
-		System.out.println(feed.get(0).getEmotionClassification());
-		System.out.println(diary.get(0).getDiaryContent());
 		
 		ArrayList<DiaryListDTO> trans = new ArrayList<DiaryListDTO>();
 		
@@ -80,17 +66,10 @@ public class CalenderController {
 			trans.add(new DiaryListDTO(diary.get(i).getCreatedAt(), feed.get(i).getEmotionClassification(), diary.get(i).getDiaryContent()));
 		}
 		
-		System.out.println(trans.size());
-		
 		Gson gson = new GsonBuilder().create();
 		
 		String json = gson.toJson(trans);
 		
-		System.out.println("json 변환 " + json);
-		
 		return json;
-	
 	}
-	
-
 }

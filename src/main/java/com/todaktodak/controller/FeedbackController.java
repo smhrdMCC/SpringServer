@@ -24,6 +24,8 @@ public class FeedbackController {
 	@ResponseBody
 	@PostMapping("/feedback")
 	public String SaveText(@RequestBody String feedback) {
+		
+		System.out.println("feedback : " + feedback);
 		FeedBack backFeed = new FeedBack();
 		Diary diary = new Diary();
 		FeedBackDTO dto = new FeedBackDTO();
@@ -36,7 +38,8 @@ public class FeedbackController {
 
 		backFeed.setDiarySeq(diary);
 		backFeed.setAiRecommendation(array[0]);
-		backFeed.setEmotionClassification("기쁨");
+		backFeed.setEmotionClassification(array[2]);
+		backFeed.setCreatedAt(array[3]);
 
 		repo.save(backFeed);
 		return "성공";
@@ -46,13 +49,11 @@ public class FeedbackController {
 	@PostMapping("/getFeedBackMessage")
 	public String SendFeedBackText(@RequestBody String feedback) {
 		
-		System.out.println(feedback);
 		String data = feedback.replaceAll("\"", "");
 		Diary diary = new Diary();
 		diary.setDiarySeq(Long.parseLong(data));
 		
 		List<FeedBack> list = repo.findByDiarySeq(diary);
-		System.out.println(list.get(0).getAiRecommendation());
 		
 		Gson gson = new GsonBuilder().create();
 

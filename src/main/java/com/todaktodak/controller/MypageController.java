@@ -19,15 +19,12 @@ public class MypageController {
 	@PostMapping("/changeNick")
 	private String changeNick(@RequestBody emailnick inf) {
 		
-		System.out.println(" ");
-		System.out.println("받아온 정보 " + inf);
-		
 		String email = inf.getEmail().toString();
 		String nick = inf.getNick().toString();
 		
 		repo.change(email, nick);
 		
-		return "1";
+		return "성공";
 	}
 	
 }

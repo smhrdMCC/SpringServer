@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.todaktodak.entity.Diary;
 import com.todaktodak.entity.User;
-import com.todaktodak.model.SeqMailContent;
 import com.todaktodak.repository.DiaryRepository;
 import com.todaktodak.repository.FeedbackRepository;
 

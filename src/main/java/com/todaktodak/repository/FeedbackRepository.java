@@ -14,7 +14,6 @@ import com.todaktodak.entity.FeedBack;
 @Repository
 public interface FeedbackRepository extends JpaRepository<FeedBack, Long>{
 	
-	//List<FeedBack> findByDiarySeqAndCreatedAt(Long diarySeq, String createdAt);
 	List<FeedBack> findByDiarySeq(Diary diarySeq);
 	
 	@Query(value = "delete from tb_feedback where diary_seq = :seq", nativeQuery = true)

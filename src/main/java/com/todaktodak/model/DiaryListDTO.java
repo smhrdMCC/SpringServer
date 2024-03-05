@@ -14,15 +14,11 @@ public class DiaryListDTO {
 		return "DIARYLIST";
 	}
     
-    
-    
 	public DiaryListDTO(String created_at, String emotion_classification, String diary_content) {
 		this.created_at = created_at;
 		this.emotion_classification = emotion_classification;
 		this.diary_content = diary_content;
 	}
-
-
 
 	public DiaryListDTO() {
 		

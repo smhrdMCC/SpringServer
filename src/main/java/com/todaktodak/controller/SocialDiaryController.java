@@ -11,11 +11,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.todaktodak.entity.Diary;
 import com.todaktodak.entity.DiaryShare;
 import com.todaktodak.entity.User;
 import com.todaktodak.entity.userUser;
-import com.todaktodak.model.MailContent;
 import com.todaktodak.model.RandomDiary;
 import com.todaktodak.model.ToFromContent;
 import com.todaktodak.model.linkDiary;
@@ -103,13 +101,9 @@ public class SocialDiaryController {
 	@PostMapping("getDiaryRoomList")
 	private String getDiaryRoomList(@RequestBody userUser info) {
 		
-		System.out.println("info : " + info.getUserA());
 		
 		String UserA = info.getUserA();
 		String UserB = info.getUserB();
-		
-		System.out.println("userA : " + UserA);
-		System.out.println("userB : " + UserB);
 		
 		List<DiaryShare> diary = repo.getDiaryRoomList(UserA, UserB);
 		
@@ -160,13 +154,6 @@ public class SocialDiaryController {
 	@ResponseBody
 	@PostMapping("openDiary")
 	private String openDiary(@RequestBody String info) {
-		
-//		String user = info.getMail();
-//		String content = info.getContent();
-//		
-//		repo.openDiary(user, content);
-//		
-//		return "openDiary";
 		
 		String saveDiary = info.replaceAll("\"", "");
 		String[] save = saveDiary.split(":");
